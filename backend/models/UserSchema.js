@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const Movie = require("./MovieSchema")
 
 const UserSchema = new mongoose.Schema({
-    username:{type:String,require:true,unique:true},
+    username:{type:String,required:true,unique:true},
     email:{type:String,required:true},
     password:{type:String,required:true},
     RecentMovies:[{type:mongoose.Schema.Types.ObjectId,ref:"Movie",default:[]}],
