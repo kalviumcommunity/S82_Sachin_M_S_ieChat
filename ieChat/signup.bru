@@ -4,15 +4,15 @@ meta {
   seq: 2
 }
 
-get {
-  url: http://localhost:5000/api/auth/profile
+post {
+  url: http://localhost:5000/api/auth/login
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "email":"john@example.com",
-    "password":"password123"
+    "email":"123@ello.com",
+    "password":"12345678"
   }
 }

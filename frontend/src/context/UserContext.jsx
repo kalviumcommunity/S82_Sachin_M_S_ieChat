@@ -1,85 +1,38 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { Children, createContext,useContext,useEffect,useState } from "react";
 
-const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+const UserContext = createContext()
 
-  // Check user when app loads
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/api/auth/profile", {
-          method: "GET",
-          credentials: "include", // Important for cookies!
-        });
-        const data = await res.json();
-        if (res.ok) {
-          setUser(data.user); // user info from backend
-        } else {
-          setUser(null);
-        }
-      } catch (error) {
-        console.error(error);
-        setUser(null);
-      } finally {
-        setLoading(false);
+export const UserProvider = ({children})=>{
+  const [user,setUser] = useState(null)
+  const [loading,setLoading] = useState(false)
+
+  const fetchUserData = async ()=>{
+      try{
+        const resp = await axios.get("http://localhost:5000/api/auth/profile",{
+          withCredentials:true
+        } 
+        )
+        console.log(resp)
+      setUser(resp.data)
+      
+      }catch(err){
+        console.error("Error fetching User",err)
+        setUser(null)
+      }finally{
+        setLoading(false)
       }
-    };
-
-    fetchUser();
-  }, []);
-
-  // Signup function
-  const signup = async (username, email, password) => {
-    const res = await fetch("http://localhost:5000/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ username, email, password }),
-    });
-
-    const data = await res.json();
-    if (res.ok) {
-      setUser(data.user);
-    } else {
-      throw new Error(data.message);
-    }
-  };
-
-  // Login function
-  const login = async (email, password) => {
-    const res = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await res.json();
-    if (res.ok) {
-      setUser(data.user);
-    } else {
-      throw new Error(data.message);
-    }
-  };
-
-  // Logout function
-  const logout = async () => {
-    await fetch("http://localhost:5000/api/auth/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-    setUser(null);
-  };
-
+  }
+  useEffect(()=>{
+    fetchUserData()
+  },[])
   return (
-    <AuthContext.Provider value={{ user, loading, signup, login, logout }}>
+    <UserContext.Provider value={{ user, setUser, loading }}>
       {children}
-    </AuthContext.Provider>
+    </UserContext.Provider>
   );
 }
 
-// Custom hook to easily use AuthContext
-export const useAuth = () => useContext(AuthContext);
+
+export const useUser = () => useContext(UserContext);

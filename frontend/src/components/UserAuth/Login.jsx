@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/UserContext";
+import axios from "axios"
 
 const Login = () => {
-  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -12,9 +11,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
-      toast.success("Login successful!");
-      navigate("/"); // Navigate to dashboard after successful login
+      const resp = await axios.post("http://localhost:5000/api/auth/login",{email,password},{
+        withCredentials:true,
+      })
+      console.log(resp.data)
+      toast.success("Logged In!")
+      navigate("/")
+      
     } catch (e) {
       toast.error("Login failed. Please check your credentials.");
     }

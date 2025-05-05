@@ -1,12 +1,18 @@
 import React from 'react'
-import {useAuth} from "../context/UserContext"
+import { useUser } from '../context/UserContext'
 
 function Home() {
-  const {user} = useAuth()
+  const {user,loading} = useUser()
   console.log(user)
-  return (
+  if(loading) return (<p>Loading User..</p>)
+  if(!user) return (
     <div>
-      
+      Login to see details
+    </div>
+  )
+    return (
+    <div>
+      welcome {user.username}
     </div>
   )
 }
