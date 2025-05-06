@@ -8,7 +8,7 @@ const MovieSchema = new mongoose.Schema({
     plot:{type:String,required:true},
     imgurl:{type:String,required:true},
     IMDBrating:{type:String,required:true},
-    rottenTomatoesrating:{type:String,required:true},
+    rottenTomatoesrating:{type:String},
     
 })
 

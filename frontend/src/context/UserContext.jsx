@@ -14,7 +14,7 @@ export const UserProvider = ({children})=>{
           withCredentials:true
         } 
         )
-        console.log(resp)
+
       setUser(resp.data)
       
       }catch(err){
