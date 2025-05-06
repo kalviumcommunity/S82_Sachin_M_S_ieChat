@@ -74,3 +74,15 @@ module.exports.Profile = async (req,res)=>{
         res.status(500).json({message:"Server Error"})
     }
 }
+
+module.exports.UpdateProfilePic = async (req,res)=>{
+    try{
+        const user = await User.findByIdAndUpdate(req.userId,
+            {profilePic:`/uploads/profile_pics/${req.file.filename}`},
+            {new:true},
+        ).select('-password')
+        return res.json({message:"Profile Pic Updated",user})
+    }catch(err){
+        res.status(500).json({message:"Server Error"})
+    }
+}

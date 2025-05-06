@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const connectDB = require("./db/db")
 const cookieParser = require("cookie-parser")
+const path = require("path");
 
 const authRoute = require("./routes/authRoutes")
 const movieRoute = require("./routes/movieRoutes")
@@ -26,6 +27,8 @@ app.use(cors({
   credentials: true,       
 }))
 app.use(cookieParser())
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use('/api/auth',authRoute)
 app.use("/api/movies",movieRoute)
