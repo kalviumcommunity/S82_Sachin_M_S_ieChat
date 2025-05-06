@@ -16,7 +16,7 @@ const Login = () => {
       })
       console.log(resp.data)
       toast.success("Logged In!")
-      navigate("/")
+      window.location.href = "/"
       
     } catch (e) {
       toast.error("Login failed. Please check your credentials.");

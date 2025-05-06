@@ -24,11 +24,23 @@ export const UserProvider = ({children})=>{
         setLoading(false)
       }
   }
+  const logout = async () => {
+    try {
+      await axios.post("http://localhost:5000/api/auth/logout", null, {
+        withCredentials: true,
+      });
+      setUser(null);
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+
+
   useEffect(()=>{
     fetchUserData()
   },[])
   return (
-    <UserContext.Provider value={{ user, setUser, loading }}>
+    <UserContext.Provider value={{ user, setUser, loading,logout }}>
       {children}
     </UserContext.Provider>
   );
