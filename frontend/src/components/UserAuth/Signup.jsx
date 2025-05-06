@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useAuth } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Signup = () => {
-  const { signup } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -21,7 +19,10 @@ const Signup = () => {
     }
 
     try {
-      await signup(username, email, password);
+
+      await axios.post("http://localhost:5000/api/auth/singup",{username,email,password},{
+        withCredentials:true
+      })
       toast.success("Signup successful!");
       navigate("/dashboard"); // Navigate after successful signup
     } catch (err) {
