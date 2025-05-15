@@ -1,6 +1,13 @@
-const {SearchMovies} = require("../controller/movieController")
-const router = require("express").Router()
+const {SearchMovies,CreateMovies,MovieData,RecentMovieList,} = require("../controller/movieController");
 
-router.get("/search-movies",SearchMovies)
+const router = require("express").Router();
 
-module.exports = router
+router.get("/search-movies", SearchMovies);
+
+router.post("/create-movies/:movieID", CreateMovies);
+
+router.get("/data/:movieID", MovieData);
+
+router.put("/recent-movies-list/:movieID", RecentMovieList);
+
+module.exports = router;
