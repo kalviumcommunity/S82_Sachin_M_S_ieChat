@@ -4,6 +4,7 @@ const connectDB = require("./db/db")
 const cookieParser = require("cookie-parser")
 const path = require("path");
 
+const chatRoute = require("./routes/chatBotRoutes")
 const authRoute = require("./routes/authRoutes")
 const movieRoute = require("./routes/movieRoutes")
 
@@ -32,6 +33,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use('/api/auth',authRoute)
 app.use("/api/movies",movieRoute)
+app.use("/api/aibot",chatRoute)
  
 app.listen(process.env.PORT,()=>{
     console.log("Success")

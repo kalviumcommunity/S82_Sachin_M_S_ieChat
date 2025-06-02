@@ -1,19 +1,21 @@
 meta {
   name: searchMovie
   type: http
-  seq: 3
+  seq: 1
 }
 
-get {
-  url: http://localhost:5000/api/movies/search-movies
+post {
+  url: http://localhost:5000/api/students/
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "movieName":"Game of thrones",
-    "year":"",
-    "type":"series"
+  "name":"Laser11",
+  "age":17,
+  "email":"123@123.com"
+  
   }
+  //68353be84852ce2b7b1b62b
 }
