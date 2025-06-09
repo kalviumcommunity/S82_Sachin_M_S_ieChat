@@ -58,13 +58,13 @@ module.exports.RecentMovieList = async (req, res) => {
   try {
     const { movieID } = req.params;
 
+
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ message: "User not logged in" });
 
     const newMovie = await Movie.findOne({ movieID });
     if (!newMovie) return res.status(404).json({ message: "Movie not found" });
-
-    const updatedUser = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       req.userId,
       {
         $push: {

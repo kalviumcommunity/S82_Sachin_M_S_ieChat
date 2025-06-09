@@ -6,6 +6,8 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
+  ///recent-movies-list/:movieID
+
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -23,11 +25,22 @@ const MovieDetails = () => {
       window.open(`https://www.imdb.com/title/${movie.movieID}`, "_blank");
     }
   };
+  
+  const addRecent = async ()=>{
+await axios.put(`http://localhost:5000/api/movies/recent-movies-list/${id}`, null, {
+  withCredentials: true,
+});
+  }
 
   if (!movie) return <div className="text-white p-4">Loading...</div>;
 
   return (
+
+
     <div className="min-h-screen bg-[#2f3136] text-white flex justify-center items-center p-6">
+            <button onClick={addRecent} className="bg-[#5865F2] text-white font-medium py-2 px-4 rounded-lg hover:bg-[#4752C4] active:scale-95 transition">
+  Add to Recent
+</button>
       <div
         onClick={handleClick}
         className="bg-[#36393f] rounded-2xl shadow-xl p-6 max-w-3xl w-full cursor-pointer transition transform hover:scale-105 hover:shadow-2xl flex flex-col md:flex-row gap-6"
@@ -47,6 +60,7 @@ const MovieDetails = () => {
             <p><strong>IMDB Rating:</strong> {movie.IMDBrating}</p>
           </div>
           <p className="text-xs italic text-gray-500">Click to view on IMDb</p>
+
         </div>
       </div>
     </div>
