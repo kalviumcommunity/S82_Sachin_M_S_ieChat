@@ -1,6 +1,7 @@
 const Movie = require("../models/MovieSchema");
 const User = require("../models/UserSchema");
 const axios = require("axios");
+const MovieChat = require("../models/MovieChatSchema")
 
 module.exports.SearchMovies = async (req, res) => {
   try {
@@ -58,13 +59,13 @@ module.exports.RecentMovieList = async (req, res) => {
   try {
     const { movieID } = req.params;
 
+
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ message: "User not logged in" });
 
     const newMovie = await Movie.findOne({ movieID });
     if (!newMovie) return res.status(404).json({ message: "Movie not found" });
-
-    const updatedUser = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       req.userId,
       {
         $push: {
@@ -83,3 +84,13 @@ module.exports.RecentMovieList = async (req, res) => {
     return res.status(500).json({ message: "Error updating recent list" });
   }
 };
+
+module.exports.ChatHistory = async(req,res)=>{
+   try {
+    const chats = await MovieChat.find({ movieID: req.params.movieID }).sort({ timestamp: 1 });
+    res.json(chats);
+  } catch (err) {
+    res.status(500).send('Error fetching movie chats');
+  }
+}
+
