@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { redirect, useParams } from "react-router-dom";
 import axios from "axios";
 import MovieChat from "../MovieChat/MovieChat"; 
 
@@ -26,6 +26,7 @@ const MovieDetails = ({ user }) => {
   };
 
   const addRecent = async () => {
+    if(!user)redirect('/login')
     await axios.put(`https://s82-sachin-m-s-iechat.onrender.com/api/movies/recent-movies-list/${id}`, null, {
       withCredentials: true,
     });
