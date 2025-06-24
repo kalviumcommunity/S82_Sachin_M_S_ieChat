@@ -21,7 +21,7 @@ const Signup = () => {
 
     try {
 
-      await axios.post("http://localhost:5000/api/auth/signup",{username,email,password},{
+      await axios.post("https://s82-sachin-m-s-iechat.onrender.com/api/auth/signup",{username,email,password},{
         withCredentials:true
       })
       toast.success("Signup successful!");
