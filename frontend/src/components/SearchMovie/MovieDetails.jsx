@@ -26,7 +26,7 @@ const MovieDetails = ({ user }) => {
   };
 
   const addRecent = async () => {
-    await axios.put(`http://localhost:5000/api/movies/recent-movies-list/${id}`, null, {
+    await axios.put(`https://s82-sachin-m-s-iechat.onrender.com/api/movies/recent-movies-list/${id}`, null, {
       withCredentials: true,
     });
   };
