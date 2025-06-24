@@ -7,7 +7,7 @@ const MovieCard = ({ movie }) => {
 
   const handleMovieInfo = async () => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/movies/create-movies/${movie.imdbID}`);
+      const response = await axios.post(`https://s82-sachin-m-s-iechat.onrender.com/api/movies/create-movies/${movie.imdbID}`);
       const film = response.data.movie;
       navigate(`/movie/${film.movieID}`);
     } catch (error) {

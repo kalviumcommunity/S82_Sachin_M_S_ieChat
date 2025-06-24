@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import { useUser } from '../../context/UserContext'; 
 
-const socket = io('http://localhost:5000');
+const socket = io('https://s82-sachin-m-s-iechat.onrender.com');
 
 function MovieChat({ movieID }) {
   const { user } = useUser();
@@ -17,7 +17,7 @@ function MovieChat({ movieID }) {
     socket.emit('join_movie_room', movieID);
 
     // Fetch previous messages
-    axios.get(`http://localhost:5000/api/movies/movie-chats/${movieID}`)
+    axios.get(`https://s82-sachin-m-s-iechat.onrender.com/api/movies/movie-chats/${movieID}`)
       .then(res => setMessages(res.data))
       .catch(err => console.error(err));
 

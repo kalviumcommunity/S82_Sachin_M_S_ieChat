@@ -20,7 +20,7 @@ function Home() {
     try {
       setUploading(true);
       const res = await axios.put(
-        "http://localhost:5000/api/auth/update-profile-pic",
+        "https://s82-sachin-m-s-iechat.onrender.com/api/auth/update-profile-pic",
         formData,
         {
           withCredentials: true,

@@ -19,7 +19,7 @@ const CineBotChatPopup = ({ userId }) => {
     if (open) {
       const fetchChatHistory = async () => {
         try {
-          const res = await axios.post("http://localhost:5000/api/aibot/history", { userId });
+          const res = await axios.post("https://s82-sachin-m-s-iechat.onrender.com/api/aibot/history", { userId });
           if (res.data && Array.isArray(res.data.messages)) {
             setMessages(res.data.messages);
           }
