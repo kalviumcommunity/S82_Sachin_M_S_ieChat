@@ -6,7 +6,7 @@ import Signup from './components/UserAuth/Signup';
 import SearchMovies from './components/SearchMovie/SearchMovies';
 import Navbar from './components/Others/Nav';
 import MovieDetails from './components/SearchMovie/MovieDetails';
-import CineBotChatPopup from './components/ChatBot/CineBotChatPopUp';
+import CineBotChatPopup from './components/ChatBot/CineBotChatPopup';
 import { useUser } from './context/UserContext';
 
 function App() {
