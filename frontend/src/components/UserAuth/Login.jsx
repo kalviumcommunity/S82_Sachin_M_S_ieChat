@@ -11,7 +11,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post("http://localhost:5000/api/auth/login",{email,password},{
+      const resp = await axios.post("https://s82-sachin-m-s-iechat.onrender.com/api/auth/login",{email,password},{
         withCredentials:true,
       })
       console.log(resp.data)

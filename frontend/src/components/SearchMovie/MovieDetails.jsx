@@ -10,7 +10,7 @@ const MovieDetails = ({ user }) => {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const resp = await axios.get(`http://localhost:5000/api/movies/data/${id}`);
+        const resp = await axios.get(`https://s82-sachin-m-s-iechat.onrender.com/api/movies/data/${id}`);
         setMovie(resp.data.data);
       } catch (err) {
         console.error("Error fetching movie:", err);
@@ -27,7 +27,7 @@ const MovieDetails = ({ user }) => {
 
   const addRecent = async () => {
     if(!user)redirect('/login')
-    await axios.put(`http://localhost:5000/api/movies/recent-movies-list/${id}`, null, {
+    await axios.put(`https://s82-sachin-m-s-iechat.onrender.com/api/movies/recent-movies-list/${id}`, null, {
       withCredentials: true,
     });
   };

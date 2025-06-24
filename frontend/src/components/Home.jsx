@@ -20,7 +20,7 @@ function Home() {
     try {
       setUploading(true);
       const res = await axios.put(
-        "http://localhost:5000/api/auth/update-profile-pic",
+        "https://s82-sachin-m-s-iechat.onrender.com/api/auth/update-profile-pic",
         formData,
         {
           withCredentials: true,
@@ -59,7 +59,7 @@ function Home() {
         <h2 className="text-2xl font-bold">👋 Welcome, {user.username}!</h2>
         {user.profilePic && (
           <img
-            src={`http://localhost:5000${user.profilePic}`}
+            src={`https://s82-sachin-m-s-iechat.onrender.com${user.profilePic}`}
             alt="Profile"
             className="w-24 h-24 rounded-full mx-auto border border-gray-500"
           />
