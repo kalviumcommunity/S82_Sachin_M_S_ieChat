@@ -10,7 +10,7 @@ const MovieDetails = ({ user }) => {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const resp = await axios.get(`http://localhost:5000/api/movies/data/${id}`);
+        const resp = await axios.get(`https://s82-sachin-m-s-iechat.onrender.com/api/movies/data/${id}`);
         setMovie(resp.data.data);
       } catch (err) {
         console.error("Error fetching movie:", err);
