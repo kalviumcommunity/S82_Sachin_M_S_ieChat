@@ -38,8 +38,8 @@ app.use(cookieParser())
 
 const io = new Server(server,{
     cors:{
-        origin:"http://localhost:5173",
-        methods:["GET","POST"]
+        origin:"https://s82-sachin-m-s-iechat-1.onrender.com",
+        methods:["GET","POST","PUT","DELETE","UPDATE"]
     }
 })
 

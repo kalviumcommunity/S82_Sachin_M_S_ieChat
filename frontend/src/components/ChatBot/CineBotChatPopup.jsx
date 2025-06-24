@@ -45,7 +45,7 @@ const CineBotChatPopup = ({ userId }) => {
       setMessages((prev) => [...prev, { role: "user", content: input }]);
 
       // Call backend
-      const res = await axios.post("http://localhost:5000/api/aibot/chat", {
+      const res = await axios.post("https://s82-sachin-m-s-iechat.onrender.com/api/aibot/chat", {
         prompt: input,
         userId,
       });

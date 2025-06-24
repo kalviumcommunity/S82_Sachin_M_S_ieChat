@@ -10,7 +10,7 @@ export const UserProvider = ({children})=>{
 
   const fetchUserData = async ()=>{
       try{
-        const resp = await axios.get("http://localhost:5000/api/auth/profile",{
+        const resp = await axios.get("https://s82-sachin-m-s-iechat.onrender.com/api/auth/profile",{
           withCredentials:true
         } 
         )
@@ -26,7 +26,7 @@ export const UserProvider = ({children})=>{
   }
   const logout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout", null, {
+      await axios.post("https://s82-sachin-m-s-iechat.onrender.com/api/auth/logout", null, {
         withCredentials: true,
       });
       setUser(null);
