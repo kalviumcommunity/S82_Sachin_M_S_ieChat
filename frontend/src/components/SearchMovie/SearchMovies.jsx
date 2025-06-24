@@ -10,7 +10,7 @@ function SearchMovies() {
     
     const handleSearch = async ()=>{
       if(type == "both")setType("")
-      const resp = await axios.get("http://localhost:5000/api/movies/search-movies",{
+      const resp = await axios.get("https://s82-sachin-m-s-iechat.onrender.com/api/movies/search-movies",{
    params: {movieName:movieName,year:year,type:type}
   })
   console.log(resp.data.data)  
