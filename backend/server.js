@@ -38,7 +38,7 @@ app.use(cookieParser())
 
 const io = new Server(server,{
     cors:{
-        origin:"https://s82-sachin-m-s-iechat-1.onrender.com",
+        origin:"https://iechat.netlify.app",
         methods:["GET","POST","PUT","DELETE","UPDATE"]
     }
 })
