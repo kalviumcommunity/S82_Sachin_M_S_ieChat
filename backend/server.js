@@ -30,7 +30,7 @@ const app = express()
 const server = http.createServer(app)
 app.use(express.json())
 app.use(cors({
-    origin: "https://s82-sachin-m-s-iechat-1.onrender.com",
+    origin: "https://iechat.netlify.app",
   credentials: true,       
 }))
 app.use(cookieParser())
