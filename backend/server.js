@@ -30,7 +30,7 @@ const app = express()
 const server = http.createServer(app)
 app.use(express.json())
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://s82-sachin-m-s-iechat-1.onrender.com",
   credentials: true,       
 }))
 app.use(cookieParser())
