@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../context/UserContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Home() {
   const { user, loading, logout } = useUser();
@@ -46,9 +47,7 @@ function Home() {
     return (
       <div className="flex items-center justify-center h-screen bg-[#2f3136] text-white text-lg">
         Please{" "}
-        <a href="/login" className="text-blue-400 underline mx-1">
-          login
-        </a>{" "}
+        <Link to="/login" className="text-blue-400 underline mx-1">Login</Link>{" "}
         to see your dashboard.
       </div>
     );
