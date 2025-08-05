@@ -46,7 +46,6 @@ module.exports.Login = async (req,res,next)=>{
         }
         const token = generateToken(user._id)
         res.cookie("token",token,{
-            withCredentials:true,
             httpOnly:true,
             secure:true,
         })
