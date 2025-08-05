@@ -16,7 +16,7 @@ module.exports.Signup = async (req,res,next)=>{
 
         res.cookie("token", token, {
             httpOnly: true,                             
-            secure: false,
+            secure: true,
             sameSite: "Strict",                         
             maxAge: 1000 * 60 * 60 * 24,               
           });
@@ -47,7 +47,8 @@ module.exports.Login = async (req,res,next)=>{
         const token = generateToken(user._id)
         res.cookie("token",token,{
             withCredentials:true,
-            httpOnly:false
+            httpOnly:true,
+            secure:true,
         })
         return res.status(201).json({message:"User Logged In Successfully",success:true})
 
