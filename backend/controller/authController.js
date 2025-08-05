@@ -17,7 +17,6 @@ module.exports.Signup = async (req,res,next)=>{
         res.cookie("token", token, {
             httpOnly: true,                             
             secure: true,
-            withCredentials:true,
             sameSite: "None",                         
             maxAge: 1000 * 60 * 60 * 24,               
           });
