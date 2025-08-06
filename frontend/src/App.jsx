@@ -27,11 +27,7 @@ function App() {
 
       {user && user._id && <CineBotChatPopup userId={user._id} />}
 
-      <div className="fixed bottom-4 right-4">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white rounded-full py-3 px-4 shadow-lg">
-          Tip Me!
-        </button>
-      </div>
+
     </>
   );
 }
